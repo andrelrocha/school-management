@@ -1,6 +1,11 @@
 import { Pool, Client } from "pg";
+import dotenv from "dotenv";
 
-const connect = "postgres://andre-oficial:1234321@localhost:5432/recipes-app-db";
+dotenv.config();
+
+const PG_URI = process.env.PG_URI!;
+
+const connect = PG_URI;
 
 const db = new Pool({
     connectionString: connect,
