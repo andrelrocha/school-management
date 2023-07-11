@@ -1,4 +1,4 @@
-import { Pool, Client } from "pg";
+import { Pool } from "pg";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -11,8 +11,8 @@ const db = new Pool({
     connectionString: connect,
 });
 
-const client = new Client({
-    connectionString: connect,
-});
+export { db };
 
-export { db, client };
+/*
+npx sequelize-cli model:create --name People --attributes name:string,active:boolean,email:string,role:string
+*/

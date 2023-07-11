@@ -1,9 +1,18 @@
 import express from "express";
 
-import { db, client } from "./db/dbConnect";
+import { db } from "./db/dbConnect";
 
 db.on("error", console.log.bind(console, "Database connection error!"));
-db.on("connect", () => console.log("Database connected!"));
+db.connect((err, client, release) => {
+    if (err) {
+        console.error("Error connecting to the database:", err);
+        return;
+    }
+  
+    console.log("Database connected!");
+  
+    release(); // Liberando a conexão de volta para o pool
+});
 
 const app = express();
 app.use(express.json());  
