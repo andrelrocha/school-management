@@ -1,4 +1,4 @@
-import { Pool, Client } from "pg";
+import { Sequelize } from "sequelize";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -7,12 +7,19 @@ const PG_URI = process.env.PG_URI!;
 
 const connect = PG_URI;
 
-const db = new Pool({
-    connectionString: connect,
+const sequelize = new Sequelize(connect, {
+    logging: false,
 });
 
-const client = new Client({
-    connectionString: connect,
-});
+async function checkDatabaseConnection() {
+    try {
+        await sequelize.authenticate();
+        await sequelize.query("SELECT 1;");
+        console.log("Database connection OK!");
+    } catch (error) {
+        console.error("Error connecting to the database: ", error);
+    }
+}
+checkDatabaseConnection();
 
-export { db, client };
+export { sequelize };
