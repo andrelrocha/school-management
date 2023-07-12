@@ -1,11 +1,11 @@
-import fs from "fs";
-import path from "path";
-import Sequelize from "sequelize";
-import process from "process";
+/* eslint-disable @typescript-eslint/no-var-requires */
+const fs = require("fs");
+const path = require("path");
+const Sequelize = require("sequelize");
+const process = require("process");
 
 const { basename } = path;
 const { env } = process;
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const config = require(__dirname + "/../config/config.json")[env];
 const db = {};
 
@@ -27,7 +27,6 @@ fs
         );
     })
     .forEach(file => {
-        // eslint-disable-next-line @typescript-eslint/no-var-requires
         const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
         db[model.name] = model;
     });
@@ -41,4 +40,4 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-export default db;
+module.exports = db;

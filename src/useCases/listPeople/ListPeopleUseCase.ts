@@ -1,11 +1,13 @@
-import People from "../../models/people";
+import db from "../../models";
 
 
 class ListPeopleUseCase {
     async execute(limit: number, page: number, order: any) {
         try{
+            const peopleModel = db.People;
+
             const [field, orderType] = order.split(":");
-            const allPeople = await People.findAll({
+            const allPeople = await peopleModel.findAll({
                 offset: (page - 1) * limit,
                 limit,
                 order: [[field, orderType === "1" ? "ASC" : "DESC"]],

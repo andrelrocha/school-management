@@ -10,10 +10,6 @@ app.use(express.json());
 
 sequelize.sync({ force: true });
 
-app.get("/teste", (req, res) => {
-    res.status(200).send({ message: "Hello World!" });
-});
-
 app.use(router);
 app.use(errorHandle400);
 app.use(errorHandle404);
