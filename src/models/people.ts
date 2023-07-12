@@ -1,29 +1,31 @@
-import { Model, DataTypes, Sequelize } from "sequelize";
+import { Model, DataTypes } from "sequelize";
+import { sequelize } from "../db/dbConnect"; // Importe a instância do Sequelize já configurada
 
-export default (sequelize: Sequelize, types: typeof DataTypes) => {
-    class People extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-        static associate(models: any) {
-            // define association here
-        }
+class People extends Model {
+    static associate(models: any) {
+    // Defina as associações aqui
     }
+}
 
-    People.init(
-        {
-            name: types.STRING,
-            active: types.BOOLEAN,
-            email: types.STRING,
-            role: types.STRING,
+People.init(
+    {
+        name: {
+            type: DataTypes.STRING,
         },
-        {
-            sequelize,
-            modelName: "People",
-        }
-    );
+        active: {
+            type: DataTypes.BOOLEAN,
+        },
+        email: {
+            type: DataTypes.STRING,
+        },
+        role: {
+            type: DataTypes.STRING,
+        },
+    },
+    {
+        sequelize,
+        modelName: "People",
+    }
+);
 
-    return People;
-};
+export default People;

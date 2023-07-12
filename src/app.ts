@@ -1,24 +1,21 @@
 import express from "express";
 
-import { db } from "./db/dbConnect";
-
-db.on("error", console.log.bind(console, "Database connection error!"));
-db.connect((err, client, release) => {
-    if (err) {
-        console.error("Error connecting to the database:", err);
-        return;
-    }
-  
-    console.log("Database connected!");
-  
-    release(); // Liberando a conexão de volta para o pool
-});
+import { sequelize } from "./db/dbConnect";
+import { router } from "./routes";
+import { errorHandle400 } from "./middleware/errors/ErrorHandle400";
+import { errorHandle404 } from "./middleware/errors/ErrorHandle404";
 
 const app = express();
-app.use(express.json());  
+app.use(express.json());
+
+sequelize.sync({ force: true });
 
 app.get("/teste", (req, res) => {
-    res.status(200).send({message: "Hello World!"});
+    res.status(200).send({ message: "Hello World!" });
 });
+
+app.use(router);
+app.use(errorHandle400);
+app.use(errorHandle404);
 
 export { app };

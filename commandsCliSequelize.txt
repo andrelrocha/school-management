@@ -8,9 +8,19 @@ The first command creates a new model named "People" and defines its attributes 
 The second command runs the migration that applies the changes defined in the newly created model to the database. This will create a new table named "People" and add the specified columns to it. 
 
 
-
 /inicializar seed
 npx sequelize-cli seed:generate --name demo-people 
 npx sequelize-cli db:seed:all
 
+/limpar o banco de seeds
+npx sequelize db:seed:undo
 
+/desfazer o último seed feito
+npx sequelize-cli db:seed:undo --seed nome-do-arquivo
+
+/desfazer seeds de uma tabela específica
+npx sequelize-cli db:seed:undo:all
+
+
+//voltar o banco a um estado anterior à última alteração
+npx sequelize-cli db:migrate:undo
