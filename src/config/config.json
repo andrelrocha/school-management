@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "andre-oficial",
+    "password": "1234321",
+    "database": "sequelize-alura",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database-name",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database-name",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}

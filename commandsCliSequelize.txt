@@ -1,0 +1,26 @@
+/criar tabela
+npx sequelize-cli model:create --name People --attributes name:string,active:boolean,email:string,role:string 
+
+/executar os arqs migration
+npx sequelize-cli db:migrate
+
+The first command creates a new model named "People" and defines its attributes using the specified data types. This model is created as a JavaScript file in the models folder.
+The second command runs the migration that applies the changes defined in the newly created model to the database. This will create a new table named "People" and add the specified columns to it. 
+
+
+/inicializar seed
+npx sequelize-cli seed:generate --name demo-people 
+npx sequelize-cli db:seed:all
+
+/limpar o banco de seeds
+npx sequelize db:seed:undo
+
+/desfazer o último seed feito
+npx sequelize-cli db:seed:undo --seed nome-do-arquivo
+
+/desfazer seeds de uma tabela específica
+npx sequelize-cli db:seed:undo:all
+
+
+//voltar o banco a um estado anterior à última alteração
+npx sequelize-cli db:migrate:undo
