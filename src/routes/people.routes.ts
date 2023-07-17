@@ -3,6 +3,7 @@ import { Router } from "express";
 import { createPeople } from "../useCases/CreatePeople";
 import { deletePeople } from "../useCases/DeletePeople";
 import { listPeople } from "../useCases/listPeople";
+import { listPeopleByid } from "../useCases/ListPeopleById";
 import { updatePeople } from "../useCases/updatePeople";
 
 
@@ -10,6 +11,10 @@ const peopleRoutes = Router();
 
 peopleRoutes.get("/", (req, res, next) => {
     return listPeople.handle(req, res, next);
+});
+
+peopleRoutes.get("/:id", (req, res, next) => {
+    return listPeopleByid.handle(req, res, next);
 });
 
 peopleRoutes.post("/", (req, res, next) => {

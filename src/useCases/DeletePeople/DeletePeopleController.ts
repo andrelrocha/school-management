@@ -9,9 +9,9 @@ class DeletePeopleController {
         try {
             const { id } = req.params;
 
-            const result = await this.deletePeopleUseCase.execute(id);
+            await this.deletePeopleUseCase.execute(id);
 
-            return res.status(204).send({ message: result.message });
+            return res.status(204).send({ message: "Person deleted successfully" });
         } catch (error) {
             return next(error) as unknown as Response<unknown, Record<string, unknown>>;
         }

@@ -12,7 +12,7 @@ class UpdatePeopleUseCase {
         try {
             if (!id) throw new Error("Missing id parameter");
 
-            const person = await models.People.findOne({ where: { id } });
+            const person = await models.People.findByPk(id);
 
             if (!person) throw new Error(`Person ${name} does not exist in our database`);
 
