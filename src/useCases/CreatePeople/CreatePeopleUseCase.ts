@@ -22,7 +22,7 @@ class CreatePeopleUseCase {
             return newPerson;
         } catch (error) {
             console.error(error);
-            
+            throw new Error(error.message);
         }
     }
 }

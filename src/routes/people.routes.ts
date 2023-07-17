@@ -2,6 +2,7 @@ import { Router } from "express";
 
 import { createPeople } from "../useCases/CreatePeople";
 import { listPeople } from "../useCases/listPeople";
+import { updatePeople } from "../useCases/updatePeople";
 
 
 const peopleRoutes = Router();
@@ -12,6 +13,10 @@ peopleRoutes.get("/", (req, res, next) => {
 
 peopleRoutes.post("/", (req, res, next) => {
     return createPeople.handle(req, res, next);
+});
+
+peopleRoutes.put("/:id", (req, res, next) => {
+    return updatePeople.handle(req, res, next);
 });
 
 export { peopleRoutes };
