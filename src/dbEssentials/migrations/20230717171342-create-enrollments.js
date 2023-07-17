@@ -18,7 +18,6 @@ module.exports = {
                 references: {
                     model: "People",
                     key: "id",
-                    where: { role: "student" }
                 },
                 onUpdate: "CASCADE",
                 onDelete: "CASCADE"

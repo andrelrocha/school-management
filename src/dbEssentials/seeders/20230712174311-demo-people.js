@@ -10,7 +10,7 @@ module.exports = {
                 name: "Ana Souza",
                 active: true,
                 email: "ana@ana.com",
-                role: "estudante",
+                role: "student",
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
@@ -18,7 +18,7 @@ module.exports = {
                 name: "Marcos Cintra",
                 active: true,
                 email: "marcos@marcos.com",
-                role: "estudante",
+                role: "student",
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
@@ -26,7 +26,7 @@ module.exports = {
                 name: "Felipe Cardoso",
                 active: true,
                 email: "felipe@felipe.com",
-                role: "estudante",
+                role: "student",
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
@@ -34,7 +34,7 @@ module.exports = {
                 name: "Sandra Gomes",
                 active: false,
                 email: "sandra@sandra.com",
-                role: "estudante",
+                role: "student",
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
@@ -42,7 +42,7 @@ module.exports = {
                 name: "Paula Morais",
                 active: true,
                 email: "paula@paula.com",
-                role: "docente",
+                role: "teacher",
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
@@ -50,7 +50,7 @@ module.exports = {
                 name: "Sergio Lopes",
                 active: true,
                 email: "sergio@sergio.com",
-                role: "docente",
+                role: "teacher",
                 createdAt: new Date(),
                 updatedAt: new Date()
             }
