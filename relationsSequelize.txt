@@ -1,0 +1,23 @@
+para fazer relation one to many, deve se referenciar a table original com hasMany, a table que recebe a FK com belongsTo.
+Tudo deve ser passado o nome do foreign key, tanto como PK, como FK
+
+ao final deve alterar os arquivos de migration da table que receberá o FK, informando references: { }
+
+Classes.hasMany(models.Enrollments, {
+                foreignKey: "classId"
+            });
+            
+Classes.belongsTo(models.Levels, {
+                foreignKey: "levelId"
+            });
+
+levelId: {
+                type: Sequelize.INTEGER,
+                allowNull: false,
+                references: {
+                    model: "Levels",
+                    key: "id"
+                },
+                onUpdate: "CASCADE",
+                onDelete: "CASCADE"
+            },
