@@ -16,7 +16,7 @@ class UpdatePeopleUseCase {
 
             if (!person) throw new Error(`Person ${name} does not exist in our database`);
 
-            const updatedPerson = await models.People.update({
+            await models.People.update({
                 name,
                 email,
                 role
