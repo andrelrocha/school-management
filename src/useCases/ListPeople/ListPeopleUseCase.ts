@@ -8,7 +8,7 @@ class ListPeopleUseCase {
             const people = await models.People.findAll({
                 offset: (page - 1) * limit,
                 limit: limit,
-                order: [[field, orderType]]
+                order: [[field, orderType === "1" ? "ASC" : "DESC"]]
             });
 
             return people;
