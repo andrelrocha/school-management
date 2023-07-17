@@ -14,8 +14,4 @@ app.use(router);
 app.use(errorHandle400);
 app.use(errorHandle404);
 
-app.get("/teste", (req, res) => {
-    res.status(200).send({message: "Hello World!"});
-});
-
 export { app };
