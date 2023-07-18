@@ -6,6 +6,8 @@ import { listPeople } from "../useCases/People/listPeople";
 import { listPeopleByid } from "../useCases/People/ListPeopleById";
 import { updatePeople } from "../useCases/People/updatePeople";
 
+import { listEnrollmentsById } from "../useCases/Enrollments/ListEnrollmentsById";
+
 
 const peopleRoutes = Router();
 
@@ -27,6 +29,12 @@ peopleRoutes.put("/:id", (req, res, next) => {
 
 peopleRoutes.delete("/:id", (req, res, next) => {
     return deletePeople.handle(req, res, next);
+});
+
+//////////////////////////////////////////////////////////////////
+
+peopleRoutes.get("/enrollments/:id", (req, res, next) => {
+    return listEnrollmentsById.handle(req, res, next);
 });
 
 export { peopleRoutes };
