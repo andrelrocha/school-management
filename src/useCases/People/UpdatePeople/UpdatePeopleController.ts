@@ -13,7 +13,7 @@ class UpdatePeopleController {
 
             const updatedPerson = await this.updatePeopleUseCase.execute({ id, name, email, role });
 
-            return response.status(200).json(updatedPerson);
+            return response.status(200).send(updatedPerson);
         } catch (error) {
             return next(error) as unknown as Response<unknown, Record<string, unknown>>;
         }

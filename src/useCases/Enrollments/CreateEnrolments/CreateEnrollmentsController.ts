@@ -7,8 +7,8 @@ class CreateEnrollmentsController {
 
     async handle(req: Request, res: Response, next: NextFunction): Promise<Response> {
         try {
-            const { status } = req.body;
-            const { studentId, classId } = req.params;
+            const { status, classId } = req.body;
+            const { studentId } = req.params;
 
             const newEnrollment = await this.createEnrollmentsUseCase.execute(studentId, classId, status);
 
