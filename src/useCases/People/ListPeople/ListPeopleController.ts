@@ -10,11 +10,9 @@ class ListPeopleController {
         try {
             let { limit = 5, page = 1 } = req.query;
             limit = Number(limit);
-            page = Number(page);      
-            
+            page = Number(page);
             if (!(limit > 0 && page > 0)) {
-                const err = new Error("One or more parameters are invalid. Page and limit must be positive numbers");
-                return next(err) as unknown as Response<unknown, Record<string, unknown>>;
+                return next() as unknown as Response<unknown, Record<string, unknown>>;
             }
 
             const { order = "name:1" } = req.query;
