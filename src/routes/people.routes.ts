@@ -33,7 +33,7 @@ peopleRoutes.delete("/:id", (req, res, next) => {
 
 //////////////////////////////////////////////////////////////////
 
-peopleRoutes.get("/enrollments/:id", (req, res, next) => {
+peopleRoutes.get("/:studentId/enrollments/:enrollmentId", (req, res, next) => {
     return listEnrollmentsById.handle(req, res, next);
 });
 

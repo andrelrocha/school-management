@@ -7,9 +7,9 @@ class ListEnrollmentsByIdController {
 
     async handle(req: Request, res: Response, next: NextFunction): Promise<Response> { 
         try {
-            const { id } =  req.params;
+            const { studentId, enrollmentId } =  req.params;
 
-            const enrollment = await this.listEnrollmentsByIdUseCase.execute(id);   
+            const enrollment = await this.listEnrollmentsByIdUseCase.execute(enrollmentId, studentId);   
 
             return res.status(200).send(enrollment);
         } catch (error) {

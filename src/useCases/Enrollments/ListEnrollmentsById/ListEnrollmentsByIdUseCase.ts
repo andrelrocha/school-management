@@ -1,10 +1,13 @@
 import models from "../../../models";
 
 class ListEnrollmentsByIdUseCase {
-    async execute(id: string) {
+    async execute(enrollmentId: string, studentId: string) {
         try {
             const enrollment = await models.Enrollments.findOne({
-                where: { id },
+                where: { 
+                    id: Number(enrollmentId),
+                    studentId 
+                },
                 include: [
                     {
                         model: models.People,
