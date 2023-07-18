@@ -5,7 +5,7 @@ class ListEnrollmentsByIdUseCase {
         try {
             const enrollment = await models.Enrollments.findOne({
                 where: { 
-                    id: Number(enrollmentId),
+                    id: enrollmentId,
                     studentId 
                 },
                 include: [
