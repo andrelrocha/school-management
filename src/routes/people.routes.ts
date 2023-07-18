@@ -7,6 +7,7 @@ import { listPeopleByid } from "../useCases/People/ListPeopleById";
 import { updatePeople } from "../useCases/People/updatePeople";
 
 import { createEnrollments } from "../useCases/Enrollments/CreateEnrolments";
+import { deleteEnrollments } from "../useCases/Enrollments/DeleteEnrollments";
 import { listEnrollmentsById } from "../useCases/Enrollments/ListEnrollmentsById";
 import { updateEnrollment } from "../useCases/Enrollments/UpdateEnrollments";
 
@@ -45,5 +46,10 @@ peopleRoutes.post("/:studentId/enrollments/", (req, res, next) => {
 peopleRoutes.put("/:studentId/enrollments/:enrollmentId", (req, res, next) => {
     return updateEnrollment.handle(req, res, next);
 });
+
+peopleRoutes.delete("/:studentId/enrollments/:enrollmentId", (req, res, next) => {
+    return deleteEnrollments.handle(req, res, next);
+});
+
 
 export { peopleRoutes };
