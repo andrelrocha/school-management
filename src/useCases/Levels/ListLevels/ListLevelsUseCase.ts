@@ -1,23 +1,22 @@
-import models from "../../models";
+import models from "../../../models";
 
-class ListClassesUseCase {
-
+class ListLevelsUseCase {
     async execute(limit: number, page: number, order: any) {
         try {
             const [field, orderType] = order.split(":");
 
-            const classes = await models.Classes.findAll({
+            const levels = await models.Levels.findAll({
                 offset: (page - 1) * limit,
                 limit: limit,
                 order: [[field, orderType === "1" ? "ASC" : "DESC"]]
             });
 
-            return classes;
+            return levels;
         } catch (error) {
-            console.error("An error occurred while loading Classes's database:", error);
+            console.error("An error occurred while loading Levels's database:", error);
             throw error;
         }
     }
 }
 
-export { ListClassesUseCase };
+export { ListLevelsUseCase };

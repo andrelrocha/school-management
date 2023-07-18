@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { listClasses } from "../useCases/ListClasses";
+import { listClasses } from "../useCases/Classes/ListClasses";
 
 const classesRoutes = Router();
 

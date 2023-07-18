@@ -1,10 +1,10 @@
 import { Router } from "express";
 
-import { createPeople } from "../useCases/CreatePeople";
-import { deletePeople } from "../useCases/DeletePeople";
-import { listPeople } from "../useCases/listPeople";
-import { listPeopleByid } from "../useCases/ListPeopleById";
-import { updatePeople } from "../useCases/updatePeople";
+import { createPeople } from "../useCases/People/CreatePeople";
+import { deletePeople } from "../useCases/People/DeletePeople";
+import { listPeople } from "../useCases/People/listPeople";
+import { listPeopleByid } from "../useCases/People/ListPeopleById";
+import { updatePeople } from "../useCases/People/updatePeople";
 
 
 const peopleRoutes = Router();
