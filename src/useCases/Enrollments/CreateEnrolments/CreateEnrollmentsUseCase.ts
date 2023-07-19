@@ -14,6 +14,10 @@ class CreateEnrollmentsUseCase {
                 throw new Error("Enrollment already exists");
             }
 
+            if (!studentId || !classId || !status) {
+                throw new Error("Missing information needed for enrollment creation");
+            }
+
             const enrollment = await models.Enrollments.create({
                 studentId,
                 classId,

@@ -11,6 +11,10 @@ class CreateLevelsUseCase {
                 throw new Error("Level already exists");
             }
 
+            if (!desc_lvl) {
+                throw new Error("Missing information needed for level creation");
+            }
+
             const level = await models.Levels.create({ desc_lvl });
             
             return level;

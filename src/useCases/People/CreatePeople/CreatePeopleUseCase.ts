@@ -13,6 +13,8 @@ class CreatePeopleUseCase {
             const personAlreadyExists = await models.People.findOne({ where: { email } });
             if (personAlreadyExists) throw new Error(`Person with email ${email} already exists in our database`);
             
+            if (!name || !email || !role) throw new Error("Missing information needed for person creation");
+
             const newPerson = await models.People.create({
                 name,
                 email,
