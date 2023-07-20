@@ -1,6 +1,6 @@
 import models from "../../../models";
 
-class RestaurePeopleUseCase {
+class RestorePeopleUseCase {
     async execute(id: string) {
         try {
             const person = await models.People.findByPk(id, {
@@ -22,4 +22,4 @@ class RestaurePeopleUseCase {
     }
 }
 
-export { RestaurePeopleUseCase };
+export { RestorePeopleUseCase };

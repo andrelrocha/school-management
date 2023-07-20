@@ -4,7 +4,7 @@ import { createPeople } from "../useCases/People/CreatePeople";
 import { deletePeople } from "../useCases/People/DeletePeople";
 import { listPeople } from "../useCases/People/listPeople";
 import { listPeopleByid } from "../useCases/People/ListPeopleById";
-import { restaurePeople } from "../useCases/People/RestaurePeople";
+import { restorePeople } from "../useCases/People/RestorePeople";
 import { updatePeople } from "../useCases/People/updatePeople";
 
 import { createEnrollments } from "../useCases/Enrollments/CreateEnrolments";
@@ -26,8 +26,8 @@ peopleRoutes.post("/", (req, res, next) => {
     return createPeople.handle(req, res, next);
 });
 
-peopleRoutes.post("/:id", (req, res, next) => {
-    return restaurePeople.handle(req, res, next);
+peopleRoutes.post("/:id/restore", (req, res, next) => {
+    return restorePeople.handle(req, res, next);
 });
 
 peopleRoutes.put("/:id", (req, res, next) => {
