@@ -2,7 +2,7 @@ import { Router } from "express";
 
 import { createPeople } from "../useCases/People/CreatePeople";
 import { deletePeople } from "../useCases/People/DeletePeople";
-import { listPeople } from "../useCases/People/listPeople";
+import { listPeopleActive } from "../useCases/People/ListPeopleActive";
 import { listPeopleByid } from "../useCases/People/ListPeopleById";
 import { restorePeople } from "../useCases/People/RestorePeople";
 import { updatePeople } from "../useCases/People/updatePeople";
@@ -16,7 +16,7 @@ import { updateEnrollment } from "../useCases/Enrollments/UpdateEnrollments";
 const peopleRoutes = Router();
 
 peopleRoutes.get("/", (req, res, next) => {
-    return listPeople.handle(req, res, next);
+    return listPeopleActive.handle(req, res, next);
 });
 
 peopleRoutes.get("/:id", (req, res, next) => {

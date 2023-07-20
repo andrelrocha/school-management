@@ -1,13 +1,13 @@
 #Project Requirements
 
 The client would not like important system records, such as People, to be permanently deleted from the database.
--- silent deletion -- OK!
+- OK!
 
 To make the interface cleaner, the client would like only active users to be displayed by default in the People list.
--- listPeople - findall {  where: { status: active }}  - OK!
+- OK!
 
 Some form validation failures have been noticed on the front-end, resulting in invalid email data in the database. It is desirable for this validation not to be the sole responsibility of the front-end.
--- validate { isEmail: true }
+- OK!
 
 It is important to be able to quickly query all confirmed enrollments related to student X.
 -- models.Enrollments.findAll({ where: { studentId: id, status: "ACTIVE" } })
