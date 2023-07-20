@@ -3,6 +3,7 @@ import { Router } from "express";
 import { createPeople } from "../useCases/People/CreatePeople";
 import { deletePeople } from "../useCases/People/DeletePeople";
 import { listPeopleActive } from "../useCases/People/ListPeopleActive";
+import { listPeopleAll } from "../useCases/People/ListPeopleAll";
 import { listPeopleByid } from "../useCases/People/ListPeopleById";
 import { restorePeople } from "../useCases/People/RestorePeople";
 import { updatePeople } from "../useCases/People/updatePeople";
@@ -17,6 +18,10 @@ const peopleRoutes = Router();
 
 peopleRoutes.get("/", (req, res, next) => {
     return listPeopleActive.handle(req, res, next);
+});
+
+peopleRoutes.get("/all", (req, res, next) => {
+    return listPeopleAll.handle(req, res, next);
 });
 
 peopleRoutes.get("/:id", (req, res, next) => {

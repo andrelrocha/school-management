@@ -4,7 +4,7 @@ class ListPeopleByIdUseCase {
 
     async execute(id: string) {
         try {
-            const person = await models.People.unscoped().findByPk(id, {
+            const person = await models.People.scope("all").findByPk(id, {
                 paranoid: false
             });
     
