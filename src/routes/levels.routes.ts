@@ -3,6 +3,7 @@ import { Router } from "express";
 import { createLevels } from "../useCases/Levels/CreateLevels";
 import { deleteLevels } from "../useCases/Levels/DeleteLevels";
 import { listLevels } from "../useCases/Levels/ListLevels";
+import { restoreLevels } from "../useCases/Levels/RestoreLevels";
 import { updateLevels } from "../useCases/Levels/UpdateLevels";
 
 const levelsRoutes = Router();
@@ -13,6 +14,10 @@ levelsRoutes.get("/", (request, response, next) => {
 
 levelsRoutes.post("/", (request, response, next) => {
     return createLevels.handle(request, response, next);
+});
+
+levelsRoutes.post("/:id/restore", (request, response, next) => {
+    return restoreLevels.handle(request, response, next);
 });
 
 levelsRoutes.put("/:id", (request, response, next) => {

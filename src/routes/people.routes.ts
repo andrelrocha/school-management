@@ -10,6 +10,7 @@ import { updatePeople } from "../useCases/People/updatePeople";
 import { createEnrollments } from "../useCases/Enrollments/CreateEnrolments";
 import { deleteEnrollments } from "../useCases/Enrollments/DeleteEnrollments";
 import { listEnrollmentsById } from "../useCases/Enrollments/ListEnrollmentsById";
+import { restoreEnrollments } from "../useCases/Enrollments/RestoreEnrollments";
 import { updateEnrollment } from "../useCases/Enrollments/UpdateEnrollments";
 
 const peopleRoutes = Router();
@@ -46,6 +47,10 @@ peopleRoutes.get("/:studentId/enrollments/:enrollmentId", (req, res, next) => {
 
 peopleRoutes.post("/:studentId/enrollments/", (req, res, next) => {
     return createEnrollments.handle(req, res, next);
+});
+
+peopleRoutes.post("/:studentId/enrollments/:enrollmentId/restore", (req, res, next) => {
+    return restoreEnrollments.handle(req, res, next);
 });
 
 peopleRoutes.put("/:studentId/enrollments/:enrollmentId", (req, res, next) => {

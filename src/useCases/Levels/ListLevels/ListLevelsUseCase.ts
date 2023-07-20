@@ -8,7 +8,8 @@ class ListLevelsUseCase {
             const levels = await models.Levels.findAll({
                 offset: (page - 1) * limit,
                 limit: limit,
-                order: [[field, orderType === "1" ? "ASC" : "DESC"]]
+                order: [[field, orderType === "1" ? "ASC" : "DESC"]],
+                paranoid: false
             });
 
             return levels;
