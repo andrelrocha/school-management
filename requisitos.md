@@ -1,10 +1,10 @@
 #Project Requirements
 
 The client would not like important system records, such as People, to be permanently deleted from the database.
--- silent deletion
+-- silent deletion -- OK!
 
 To make the interface cleaner, the client would like only active users to be displayed by default in the People list.
--- listPeople - findall {  where: { status: active }}
+-- listPeople - findall {  where: { status: active }}  - OK!
 
 Some form validation failures have been noticed on the front-end, resulting in invalid email data in the database. It is desirable for this validation not to be the sole responsibility of the front-end.
 -- validate { isEmail: true }
