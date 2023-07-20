@@ -6,7 +6,7 @@ import { errorHandle400 } from "./middleware/errors/ErrorHandle400";
 import { errorHandle404 } from "./middleware/errors/ErrorHandle404";
 import { errorHandlePagination } from "./middleware/errors/ErrorHandlePagination";
 
-sequelize.sync({ force: true });
+
 
 const app = express();
 app.use(express.json());  

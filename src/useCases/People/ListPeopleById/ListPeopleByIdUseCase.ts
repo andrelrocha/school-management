@@ -4,7 +4,9 @@ class ListPeopleByIdUseCase {
 
     async execute(id: string) {
         try {
-            const person = await models.People.findByPk(id);
+            const person = await models.People.findByPk(id, {
+                paranoid: false
+            });
     
             if (!person) {
                 throw new Error("Person not found");
