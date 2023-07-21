@@ -1,13 +1,13 @@
 import { NextFunction, Request, Response } from "express"; 
 
-import { ListClassesFullUseCase } from "./ListClassesFullUseCase";
+import { ListClassesStatusUseCase } from "./ListClassesStatusUseCase";
 
-class ListClassesFullController {
-    constructor(private listClassesFullUseCase: ListClassesFullUseCase) { }
+class ListClassesStatusController {
+    constructor(private listClassesStatusUseCase: ListClassesStatusUseCase) { }
 
     async handle(req: Request, res: Response, next: NextFunction): Promise<Response> { 
         try {
-            const enrollment = await this.listClassesFullUseCase.execute();   
+            const enrollment = await this.listClassesStatusUseCase.execute();   
 
             return res.status(200).send(enrollment);
         } catch (error) {
@@ -16,4 +16,4 @@ class ListClassesFullController {
     }
 }
 
-export { ListClassesFullController };
+export { ListClassesStatusController };

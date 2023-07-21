@@ -4,6 +4,7 @@ import { createClasses } from "../useCases/Classes/CreateClasses";
 import { deleteClasses } from "../useCases/Classes/DeleteClasses";
 import { listClasses } from "../useCases/Classes/ListClasses";
 import { listClassesFull } from "../useCases/Classes/ListClassesFull";
+import { listClassesStatus } from "../useCases/Classes/ListClassesStatus";
 import { restoreClasses } from "../useCases/Classes/RestoreClasses";
 import { updateClasses } from "../useCases/Classes/UpdateClasses";
 
@@ -17,6 +18,10 @@ classesRoutes.get("/", (req, res, next) => {
 
 classesRoutes.get("/full", (req, res, next) => {
     return listClassesFull.handle(req, res, next);
+});
+
+classesRoutes.get("/status", (req, res, next) => {
+    return listClassesStatus.handle(req, res, next);
 });
 
 classesRoutes.get("/:classId/enrollments", (req, res, next) => {

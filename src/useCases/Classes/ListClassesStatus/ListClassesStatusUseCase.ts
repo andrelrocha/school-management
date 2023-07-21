@@ -1,6 +1,6 @@
 import models from "../../../models";
 
-class ListClassesFullUseCase {
+class ListClassesStatusUseCase {
     async execute() {
         try {        
             const totalClasses = await models.Classes.count();
@@ -9,7 +9,7 @@ class ListClassesFullUseCase {
                 throw new Error("No  classes found.");
             }
 
-            const classesFull = [""];
+            const statusOfClasses = [""]; 
             
             const classes = await models.Classes.findAll();
 
@@ -18,16 +18,10 @@ class ListClassesFullUseCase {
 
                 const numberOfEnrollments = await models.Enrollments.count({ where: { classId } });
 
-                if (numberOfEnrollments >= 10) {
-                    classesFull.push(`Class with id ${classId} is full.`);
-                }
+                statusOfClasses.push(`Class with id ${classId} has ${numberOfEnrollments} enrollments.`);   
             }
 
-            if (classesFull.length > 1) {
-                return { message: "Classes full found.", classesFull };
-            }
-
-            return { message: "No classes are full." };
+            return { message: "Status of all classes:", statusOfClasses };
         } catch (error) {
             console.error(error);
             throw new Error(error.message);
@@ -35,4 +29,4 @@ class ListClassesFullUseCase {
     }
 }
 
-export { ListClassesFullUseCase };
+export { ListClassesStatusUseCase };
