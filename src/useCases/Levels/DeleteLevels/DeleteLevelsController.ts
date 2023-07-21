@@ -11,7 +11,7 @@ class DeleteLevelsController {
         try {
             await this.deleteLevelsUseCase.execute(id);
 
-            return response.status(204).send({ message: "Level deleted successfully!" });
+            return response.status(204).send();
         } catch (err) {
             return next(err) as unknown as Response<unknown, Record<string, unknown>>;
         }

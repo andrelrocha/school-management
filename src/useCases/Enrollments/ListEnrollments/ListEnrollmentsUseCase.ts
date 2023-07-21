@@ -27,7 +27,8 @@ class ListEnrollmentsUseCase {
                             }
                         ]
                     }
-                ]
+                ],
+                paranoid: false
             });
 
             return enrollments;

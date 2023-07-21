@@ -11,7 +11,7 @@ class DeleteClassesController {
 
             await this.deleteClassesUseCase.execute(id);
 
-            return response.status(204).send({message: "Class deleted successfully!"});
+            return response.status(204).send();
         } catch (err) {
             return next(err) as unknown as Response<unknown, Record<string, unknown>>;
         }

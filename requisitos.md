@@ -16,7 +16,7 @@ The client would like to be able to query open classes within a date range to av
 - OK!
 
 The client wants to be able to query enrollments by class and know which ones are full in order to better organize enrollments.
---
+- OK!
 
 Once a student's registration is deactivated, the client would like all enrollments related to that student to automatically be marked as "canceled."
--- by the time it happens the deactivation, query models.Enrollments.update({{ status: "canceled"}, { where: { studentId: id }}})
+- OK!

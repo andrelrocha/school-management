@@ -11,7 +11,7 @@ class DeletePeopleController {
 
             await this.deletePeopleUseCase.execute(id);
 
-            return res.status(204).send({ message: "Person deleted successfully" });
+            return res.status(204).send();
         } catch (error) {
             return next(error) as unknown as Response<unknown, Record<string, unknown>>;
         }

@@ -9,9 +9,9 @@ class DeleteEnrollmentsController {
         try {
             const { studentId, enrollmentId } = req.params;
 
-            const enrollment = await this.deleteEnrollmentsUseCase.execute(studentId, enrollmentId);
+            await this.deleteEnrollmentsUseCase.execute(studentId, enrollmentId);
 
-            return res.status(200).send(enrollment);
+            return res.status(204).send();
         } catch (error) {
             return next(error) as unknown as Response<unknown, Record<string, unknown>>;
             
