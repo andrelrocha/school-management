@@ -13,7 +13,7 @@ It is important to be able to quickly query all confirmed enrollments related to
 - OK!
 
 The client would like to be able to query open classes within a date range to avoid receiving unnecessary information (such as old classes).
---const { initialDate, finalDate }  - where: { startDate: { [Op.gt]: initialDate, [Op.lt]: finalDate }, },
+- OK!
 
 The client wants to be able to query enrollments by class and know which ones are full in order to better organize enrollments.
 --

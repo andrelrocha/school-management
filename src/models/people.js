@@ -13,6 +13,8 @@ module.exports = (sequelize, DataTypes) => {
             });
             People.hasMany(models.Enrollments, {
                 foreignKey: "studentId",
+                
+                //define a scope is a better way to filter data than using where, computationally speaking
                 scope: { status: "confirmado" },
                 as: "confirmedEnrollments"
             });

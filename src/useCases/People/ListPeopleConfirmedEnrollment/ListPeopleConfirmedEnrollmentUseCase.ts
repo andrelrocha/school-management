@@ -4,9 +4,7 @@ class ListPeopleConfirmedEnrollmentUseCase {
     async execute(id: string) {
         try {
             const people = await models.People.findOne({
-                where: {
-                    id
-                },
+                where: { id },
             });
 
             const enrollments = await people.getConfirmedEnrollments();
