@@ -6,10 +6,16 @@ import { listClasses } from "../useCases/Classes/ListClasses";
 import { restoreClasses } from "../useCases/Classes/RestoreClasses";
 import { updateClasses } from "../useCases/Classes/UpdateClasses";
 
+import { listEnrollmentsByClass } from "../useCases/Enrollments/ListEnrollmentsByClass";
+
 const classesRoutes = Router();
 
 classesRoutes.get("/", (req, res, next) => {
     return listClasses.handle(req, res, next);
+});
+
+classesRoutes.get("/:classId/enrollments", (req, res, next) => {
+    return listEnrollmentsByClass.handle(req, res, next);
 });
 
 classesRoutes.post("/", (req, res, next) => {

@@ -14,7 +14,7 @@ class ListClassesController {
                 return next() as unknown as Response<unknown, Record<string, unknown>>;
             }
 
-            const { order = "startDate:1", initialDate, finalDate  } = req.query;
+            const { order = "startDate:1", initialDate, finalDate } = req.query;
 
             const allClasses = await this.listClassesUseCase.execute(limit, page, order, initialDate, finalDate);
             return res.status(200).send(allClasses);
