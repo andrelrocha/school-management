@@ -3,7 +3,7 @@ import models from "../../../models";
 class ListEnrollmentsByClassUseCase {
     async execute(classId: string) {
         try {
-            const enrollments = await models.Enrollments.findAll({
+            const { count, rows: enrollments } = await models.Enrollments.findAndCountAll({
                 where: { classId },
                 include: [
                     {
@@ -16,7 +16,7 @@ class ListEnrollmentsByClassUseCase {
                 throw new Error("No enrollments found in this class.");
             }
 
-            return enrollments;
+            return { message: `This class has a total of ${count} enrollments.`, enrollments };
         } catch (error) {
             console.error(error);
             throw new Error(error.message);

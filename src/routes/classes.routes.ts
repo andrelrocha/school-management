@@ -3,6 +3,7 @@ import { Router } from "express";
 import { createClasses } from "../useCases/Classes/CreateClasses";
 import { deleteClasses } from "../useCases/Classes/DeleteClasses";
 import { listClasses } from "../useCases/Classes/ListClasses";
+import { listClassesFull } from "../useCases/Classes/ListClassesFull";
 import { restoreClasses } from "../useCases/Classes/RestoreClasses";
 import { updateClasses } from "../useCases/Classes/UpdateClasses";
 
@@ -12,6 +13,10 @@ const classesRoutes = Router();
 
 classesRoutes.get("/", (req, res, next) => {
     return listClasses.handle(req, res, next);
+});
+
+classesRoutes.get("/full", (req, res, next) => {
+    return listClassesFull.handle(req, res, next);
 });
 
 classesRoutes.get("/:classId/enrollments", (req, res, next) => {
