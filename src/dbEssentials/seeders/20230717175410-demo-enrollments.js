@@ -20,28 +20,28 @@ module.exports = {
         {
             status: "confirmado",
             studentId: 4,
-            classId: 10,
+            classId: 17,
             createdAt: new Date(),
             updatedAt: new Date()
         },
         {
             status: "confirmado",
             studentId: 3,
-            classId: 11,
+            classId: 17,
             createdAt: new Date(),
             updatedAt: new Date()
         },
         {
             status: "cancelado",
             studentId: 17,
-            classId: 12,
+            classId: 19,
             createdAt: new Date(),
             updatedAt: new Date()
         },
         {
             status: "cancelado",
             studentId: 16,
-            classId: 12,
+            classId: 19,
             createdAt: new Date(),
             updatedAt: new Date()
         }

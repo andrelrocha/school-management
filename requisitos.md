@@ -10,7 +10,7 @@ Some form validation failures have been noticed on the front-end, resulting in i
 - OK!
 
 It is important to be able to quickly query all confirmed enrollments related to student X.
--- models.Enrollments.findAll({ where: { studentId: id, status: "ACTIVE" } })
+- OK!
 
 The client would like to be able to query open classes within a date range to avoid receiving unnecessary information (such as old classes).
 --const { initialDate, finalDate }  - where: { startDate: { [Op.gt]: initialDate, [Op.lt]: finalDate }, },
