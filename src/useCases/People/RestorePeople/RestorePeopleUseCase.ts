@@ -14,6 +14,10 @@ class RestorePeopleUseCase {
 
             await person.restore();
 
+            await person.update(
+                { active: "true" },
+            );
+
             await models.Enrollments.update(
                 { status: "active" },
                 { where: { studentId: id }, transaction }
