@@ -4,20 +4,22 @@ class DeletePeopleUseCase {
     async execute(id: string) {
         const transaction = await models.sequelize.transaction();
         try {
-            
             const person = await models.People.findByPk(id, { paranoid: false });
             if (!person) throw new Error(`Person with id ${id} does not exist in our database`);
 
-            await person.destroy();
+            models.sequelize.transaction(async transaction => {
+                await person.destroy();
+                await person.update(
+                    { active: "false" },
+                    { transaction }
+                );
 
-            await person.update(
-                { active: "false" }
-            );
+                await models.Enrollments.update(
+                    { status: "canceled" },
+                    { where: { studentId: id }, transaction }
+                );
+            });
 
-            await models.Enrollments.update(
-                { status: "canceled" },
-                { where: { studentId: id }, transaction }
-            );
             await transaction.commit();
 
         } catch (error) {

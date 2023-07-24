@@ -8,9 +8,11 @@ class ListEnrollmentsByIdUseCase {
                     id: enrollmentId,
                     studentId 
                 },
+                paranoid: false,
                 include: [
                     {
-                        model: models.People,
+                        model: models.People.scope("all"),
+                        paranoid: false,
                     },
                     {
                         model: models.Classes,

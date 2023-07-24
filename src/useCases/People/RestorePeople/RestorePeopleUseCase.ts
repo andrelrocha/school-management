@@ -4,7 +4,7 @@ class RestorePeopleUseCase {
     async execute(id: string) {
         const transaction = await models.sequelize.transaction();
         try {
-            const person = await models.People.findByPk(id, {
+            const person = await models.People.scope("all").findByPk(id, {
                 paranoid: false
             });
 
@@ -12,16 +12,18 @@ class RestorePeopleUseCase {
                 throw new Error("Person not found");
             }
 
-            await person.restore();
+            models.sequelize.transaction(async transaction => {
+                await person.restore();
+                await person.update(
+                    { active: "true" },
+                );
 
-            await person.update(
-                { active: "true" },
-            );
+                await models.Enrollments.update(
+                    { status: "active" },
+                    { where: { studentId: id }, transaction }
+                );
+            });
 
-            await models.Enrollments.update(
-                { status: "active" },
-                { where: { studentId: id }, transaction }
-            );
             await transaction.commit();
 
             return person;
