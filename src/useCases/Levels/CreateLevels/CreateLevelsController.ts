@@ -12,6 +12,9 @@ class CreateLevelsController {
 
             const newLevel = await this.createLevels.execute(desc_lvl);
 
+            const newLevelUrl = `${req.protocol}://${req.get("host")}${req.originalUrl}/${newLevel.id}`;
+            res.header("Location", newLevelUrl);
+
             return res.status(201).send({ message: "Level created successfully", newLevel });
         } catch (err) {
             return next(err) as unknown as Response<unknown, Record<string, unknown>>;

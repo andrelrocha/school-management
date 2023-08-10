@@ -12,6 +12,9 @@ class CreateEnrollmentsController {
 
             const newEnrollment = await this.createEnrollmentsUseCase.execute(studentId, classId, status);
 
+            const newEnrollmentUrl = `${req.protocol}://${req.get("host")}${req.originalUrl}/${newEnrollment.id}`;
+            res.header("Location", newEnrollmentUrl);
+
             return res.status(201).send({ message: "Enrollment created successfully", newEnrollment });
         } catch (err) {
             return next(err) as unknown as Response<unknown, Record<string, unknown>>;

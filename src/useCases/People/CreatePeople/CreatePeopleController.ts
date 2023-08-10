@@ -12,6 +12,9 @@ class CreatePeopleController {
 
             const newPerson = await this.createPeople.execute({ name, email, role });
 
+            const newPersonUrl = `${req.protocol}://${req.get("host")}${req.originalUrl}/${newPerson.id}`;
+            res.header("Location", newPersonUrl);
+
             return res.status(201).send({ message: "Person created successfully", newPerson });
         } catch (err) {
             return next(err) as unknown as Response<unknown, Record<string, unknown>>;
