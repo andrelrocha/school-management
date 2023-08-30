@@ -1,4 +1,5 @@
-import users from "../../models/users";
+import models from "../../models";
+import { createHashSaltPassword } from "../../utils/createHashSaltPassword";
 
 interface IRequest {
     name: string;
@@ -6,15 +7,34 @@ interface IRequest {
     password: string;
 }
 
-class CreateUserUseCase({ name, email, password }: IRequest) {
-    try {
-        if (!name || !password) {
-            throw new Error("Missing required fields");
-        }
+class CreateUserUseCase {
+    async execute({ name, email, password }: IRequest) {
+        try {
+            if (!email || !password) {
+                throw new Error("Missing required fields");
+            }
 
-        const user = await users.findone({ email });
-    } catch (err) {
-        
+            const user = await models.Users.findOne({ where: { email } });
+
+            if (user) {
+                throw new Error("User already exists");
+            }
+
+            const { hashedPassword, salt } = createHashSaltPassword(password);
+
+            await models.Users.create({
+                name,
+                email,
+                password: hashedPassword,
+                salt,
+            });
+
+            console.log("User created successfully");
+            return true;
+        } catch (error) {
+            console.error("Error creating user:", error);
+            return false;
+        }
     }
 }
 
