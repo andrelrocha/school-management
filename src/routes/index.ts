@@ -11,12 +11,14 @@ import { authorizeUser } from "../middleware/authorization/AuthorizeUser";
 
 const router = Router();
 
+/*
 router.use((req, res, next) => {
     if (req.path === "/users/login" || (req.path === "/users" && req.method === "POST")) {
         return next();
     }
     authorizeUser(req, res, next);
 });
+*/
 
 router.use("/classes", classesRoutes);
 router.use("/levels", levelsRoutes);

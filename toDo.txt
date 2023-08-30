@@ -1,26 +1,7 @@
-migration de criação table User {
-    const userSchema = new mongoose.Schema({
-    name: {
-        type: String
-    },
-    email: {
-        type: String,
-        required: true,
-        unique: true 
-    },
-    password: {
-        type: String,
-        required: true
-    },
-    salt: {
-        type: String,
-        required: true
-    }
-});
-}
-CRUD de usuario
-implementar hash da senha
-rota de autenticação/login
+migration de criação table User - OK
+CRUD de usuario - OK
+implementar hash da senha - OK
+rota de autenticação/login - OK
+criar UseCase de autenticação - OK
 retornar o token jwt após o login
-criar service de autenticação
 limitar aplicação aos usuários logados no middleware

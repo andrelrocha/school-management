@@ -29,7 +29,6 @@ class CreateUserUseCase {
                 salt,
             });
 
-            console.log("User created successfully");
             return newUser;
         } catch (error) {
             console.error("Error creating user:", error);
