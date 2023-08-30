@@ -18,6 +18,21 @@ import { updateEnrollment } from "../useCases/Enrollments/UpdateEnrollments";
 
 const peopleRoutes = Router();
 
+/**
+ * @openapi
+ * /people:
+ *   get:
+ *     tags:
+ *       - People
+ *     summary: List all people
+ *     responses:
+ *       '200':
+ *         description: Success
+ *     content:
+ *       application/json:
+ *         schema:
+ *           $ref: '#/components/schemas/People'
+ */
 peopleRoutes.get("/", (req, res, next) => {
     return listPeopleActive.handle(req, res, next);
 });
@@ -38,6 +53,25 @@ peopleRoutes.post("/:id/restore", (req, res, next) => {
     return restorePeople.handle(req, res, next);
 });
 
+/**
+ * @openapi
+ * /people/{id}:
+ *   put:
+ *     tags:
+ *       - People
+ *     summary: Update someone
+ *     description: Update someone by ID
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         description: ID of the people to update
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       '200':
+ *         description: People updated successfully
+ */
 peopleRoutes.put("/:id", (req, res, next) => {
     return updatePeople.handle(req, res, next);
 });

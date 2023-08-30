@@ -1,0 +1,5 @@
+CRUD de usuario
+implementar hash da senha
+rota de login
+retornar o token jwt após o login
+limitar aplicação aos usuários logados no middleware

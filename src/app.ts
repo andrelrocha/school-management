@@ -5,12 +5,13 @@ import { router } from "./routes";
 import { errorHandle400 } from "./middleware/errors/ErrorHandle400";
 import { errorHandle404 } from "./middleware/errors/ErrorHandle404";
 import { errorHandlePagination } from "./middleware/errors/ErrorHandlePagination";
-
-
+import swaggerDocs from "./utils/swagger";
 
 const app = express();
 app.use(express.json());  
 
+const port = 3000;
+swaggerDocs(app, port);
 app.use(router);
 app.use(errorHandlePagination);
 app.use(errorHandle400);
