@@ -18,6 +18,3 @@ function authorizeUser(req, res, next) {
 }
 
 export { authorizeUser };
-
-//DEVE AINDA CONFERIR SE PRECISA SER CHAMADO
-//DEVE SER APLICADO EM TODAS AS ROTAS, MENOS NA DE LOGIN E DE CRIAÇÃO DE USUÁRIO
