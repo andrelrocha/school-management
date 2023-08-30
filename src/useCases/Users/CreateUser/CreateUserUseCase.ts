@@ -29,7 +29,15 @@ class CreateUserUseCase {
                 salt,
             });
 
-            return newUser;
+            const newUserWithoutPassword = {
+                id: newUser.id,
+                name: newUser.name,
+                email: newUser.email,
+                updatedAt: newUser.updatedAt,
+                createdAt: newUser.createdAt,
+            };
+
+            return newUserWithoutPassword;
         } catch (error) {
             console.error("Error creating user:", error);
             return false;

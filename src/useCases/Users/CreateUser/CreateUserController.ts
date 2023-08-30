@@ -12,9 +12,6 @@ class CreateUserController {
 
             const newUser = await this.createUser.execute({ name, email, password });
 
-            const newUserUrl = `${req.protocol}://${req.get("host")}${req.originalUrl}/${newUser.id}`;
-            res.header("Location", newUserUrl);
-
             return res.status(201).send({ message: "User created successfully", newUser });
         } catch (err) {
             return next(err) as unknown as Response<unknown, Record<string, unknown>>;
