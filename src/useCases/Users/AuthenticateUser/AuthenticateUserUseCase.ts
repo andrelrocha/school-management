@@ -27,7 +27,11 @@ class AuthenticateUserUseCase {
             const userAuthenticated = timingSafeEqual(testHash, realHash);
 
             if (userAuthenticated) {
-                return generateJwt(user.email);
+                const payload = { email: user.email };
+                const token = {
+                    token: generateJwt(payload)
+                };
+                return token;
             } else {
                 throw new Error("Invalid credentials. Password does not match");
             }

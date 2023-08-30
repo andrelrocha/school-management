@@ -1,8 +1,7 @@
-import jwt from "jsonwebtoken";
+import jwt, { Secret } from "jsonwebtoken";
 
-function generateJwt(email: string) {    
-    const payload = { email };
-    const tokenJwt = jwt.sign( payload, process.env.JWT_SECRET, {
+function generateJwt(payload: object) {    
+    const tokenJwt = jwt.sign(payload, process.env.JWT_SECRET as Secret, {
         expiresIn: "3 days"
     });
 

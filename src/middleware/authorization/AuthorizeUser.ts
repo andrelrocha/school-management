@@ -1,4 +1,4 @@
-import jwt from "jsonwebtoken";
+import jwt, { Secret } from "jsonwebtoken";
 
 function authorizeUser(req, res, next) {
     const tokenJwt = req.headers.authorization;
@@ -8,7 +8,7 @@ function authorizeUser(req, res, next) {
     }
 
     try {
-        const payloadToken = jwt.verify(tokenJwt, process.env.JWT_SECRET);
+        const payloadToken = jwt.verify(tokenJwt, process.env.JWT_SECRET as Secret);
         req.user = payloadToken;
 
         next();
