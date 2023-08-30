@@ -1,5 +1,5 @@
-import models from "../../models";
-import { createHashSaltPassword } from "../../utils/createHashSaltPassword";
+import models from "../../../models";
+import { createHashSaltPassword } from "../../../utils/createHashSaltPassword";
 
 interface IRequest {
     name: string;
@@ -22,7 +22,7 @@ class CreateUserUseCase {
 
             const { hashedPassword, salt } = createHashSaltPassword(password);
 
-            await models.Users.create({
+            const newUser = await models.Users.create({
                 name,
                 email,
                 password: hashedPassword,
@@ -30,7 +30,7 @@ class CreateUserUseCase {
             });
 
             console.log("User created successfully");
-            return true;
+            return newUser;
         } catch (error) {
             console.error("Error creating user:", error);
             return false;
