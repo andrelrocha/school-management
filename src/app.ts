@@ -1,4 +1,5 @@
-import express, { Response, Request } from "express";
+import express from "express";
+import dotenv from "dotenv";
 
 import { sequelize } from "./db/dbConnect";
 import { router } from "./routes";
@@ -7,16 +8,10 @@ import { errorHandle404 } from "./middleware/errors/ErrorHandle404";
 import { errorHandlePagination } from "./middleware/errors/ErrorHandlePagination";
 import swaggerDocs from "./utils/swagger";
 
-
-////
-import responseTime from "response-time";
-import { restResponseTime } from "./utils/metrics";
-////
-
+dotenv.config();
 
 const app = express();
 app.use(express.json());  
-
 
 const port = 3000;
 swaggerDocs(app, port);

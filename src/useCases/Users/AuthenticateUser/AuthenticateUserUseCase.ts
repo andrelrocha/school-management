@@ -1,4 +1,5 @@
 import models from "../../../models";
+import { generateJwt } from "../../../utils/generateJwt";
 import { scryptSync, timingSafeEqual } from "crypto";
 
 interface IRequestLogin {
@@ -25,7 +26,11 @@ class AuthenticateUserUseCase {
             // Importante usar essa comparação de buffer para evitar que invasores descubram informações sensíveis
             const userAuthenticated = timingSafeEqual(testHash, realHash);
 
-            return userAuthenticated;
+            if (userAuthenticated) {
+                return generateJwt(user.email);
+            } else {
+                throw new Error("Invalid credentials. Password does not match");
+            }
         } catch (err) {
             console.error(err);
             throw err;
