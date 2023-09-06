@@ -21,7 +21,15 @@ module.exports = (sequelize, DataTypes) => {
             },
         },
         password: DataTypes.STRING,
-        salt: DataTypes.STRING
+        salt: DataTypes.STRING,
+        passwordResetToken: {
+            type: DataTypes.STRING,
+            select: false,
+        },
+        passwordResetExpires: {
+            type: DataTypes.DATE,
+            select: false,
+        },
     }, {
         sequelize,
         modelName: "Users",
