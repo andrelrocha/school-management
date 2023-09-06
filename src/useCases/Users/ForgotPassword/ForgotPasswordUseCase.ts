@@ -1,8 +1,7 @@
 import models from "../../../models";
-import { transport } from "../../../modules/mailer";
+import { transport } from "../../../utils/mailer";
 
 import crypto from "crypto";
-import path from "path";
 
 class ForgotPasswordUseCase {
     async execute(email: string): Promise<void> {
