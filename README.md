@@ -19,6 +19,7 @@ Projeto de uma escola fictícia, em que há o gerenciamento de turmas, níveis, 
 - [x] CRUD de turmas;
 - [x] Restore dos elementos das entidades;
 - [x] Sistema de login e autenticação
+- [x] Sistema de recuperação de senha
 
 ---
 
@@ -31,5 +32,6 @@ As seguintes tecnologias foram utilizadas no desenvolvimento da API Rest do proj
 - **[Express.js] (https://expressjs.com)**
 - **[PostgreSql] (https://www.postgresql.org/)**
 - **[Sequelize] (https://sequelize.org/)**
+- **[NodeMailer] (https://nodemailer.com/)**
 - **[Swagger] (https://swagger.io/)**
 - **[Linter ESLint] (https://eslint.org)**
